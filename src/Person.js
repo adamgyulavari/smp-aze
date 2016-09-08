@@ -52,17 +52,16 @@ function engageEveryone(guys) {
         for (var i = 0; i < guys.length; i++) {
             var guy = guys[i];
             if (!guy.fiance) {
-                done = false;
                 var gal = guy.nextCandidate();
                 if (gal != undefined && (!gal.fiance || gal.prefers(guy))) {
                     guy.engageTo(gal);
+                    done = false;
                 }
             }
         }
     } while (!done);
     var result = '';
     guys.forEach((x) => {
-      console.log('lofasz');
       result = result.concat(`${x.name} married with his \t\t\t\t\t\t ${x.rank(x.fiance)}th and ${!x.fiance || x.fiance.name + ' married \t\t\t\t\t' + x.fiance.rank(x) + 'th'}<br/>`);
     });
     return result;
